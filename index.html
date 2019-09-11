@@ -1,12 +1,23 @@
-<h1> Client.html </h1>
-
-<!-- Socket IO CDN and connection -->
-
-<script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
-<script  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Client.html -->
+  
+<input>
+<button  onclick = 'submit()' > Send </button>
+<div></div>
 
 <script>
 
 	var socket =  io();
+	
+	var input =  $('input')[0]
+	var chat =  $('div')[0]
+
+	function  submit(params) {
+		socket.emit('chat', input.value)
+		input.value =  ''
+	}
+	
+	socket.on( 'chat', data  => 
+		chat.innerText +=  "\n"  + data
+	)
 
 </script>
