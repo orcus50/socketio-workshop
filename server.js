@@ -13,9 +13,8 @@ var io = require('socket.io')(server)
 // add connection event listener
 io.on('connection', socket => {
     console.log('Client connected...')
-    socket.on('chat', data  => io.emit('chat', data)) 
+    socket.on('chat', data  => io.emit('chat', data))
 })
-
 
 // bind server to port 3000
 server.listen(3000, () => {
